@@ -15,24 +15,28 @@ namespace Ejaaduino
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void lbl_Exit_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void lbl_Exit_MouseEnter(object sender, EventArgs e)
         {
-
+            lbl_Exit.ForeColor = Color.White;
+            lbl_Exit.BackColor = Color.Red;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void lbl_Exit_MouseLeave(object sender, EventArgs e)
         {
-
+            lbl_Exit.ForeColor = Color.Gray;
+            lbl_Exit.BackColor = Color.White;
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void lbl_Exit_MouseDown(object sender, MouseEventArgs e)
         {
-
+            lbl_Exit.ForeColor = Color.White;
+            lbl_Exit.BackColor = Color.DarkRed;
         }
+
     }
 }
