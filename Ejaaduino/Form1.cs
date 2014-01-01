@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
-using System;
+using System.Runtime.InteropServices;
 
 namespace Ejaaduino
 {
@@ -17,8 +17,9 @@ namespace Ejaaduino
         public Form1()
         {
             InitializeComponent();
+           // Win32.AllocConsole();  //Allocates a new console for current process.
         }
-        TextWriter _writer = null;
+       
         private void lbl_Exit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -64,17 +65,18 @@ namespace Ejaaduino
             //Ejaaduino.Echo h = new Ejaaduino.Echo("Hello my 1st C# object !");
             //h.Tell();
 
-          // var processStartInfo = System.Diagnostics.Process.Start("cmd.exe", "/k avrdude.exe -c usbasp -p m8 -U flash:w:programmer.hex");
-            var processStartInfo = new ProcessStartInfo("cmd.exe");
+       System.Diagnostics.Process.Start("cmd.exe", "/k avrdude.exe -c usbasp -p m8 -U flash:w:programmer.hex");
+           // var processStartInfo = new ProcessStartInfo("cmd.exe");
             // Instantiate the writer
-            _writer = new TextBoxStreamWriter(txtConsole);
+          //  _writer = new TextBoxStreamWriter(txtConsole);
             // Redirect the out Console stream
-            Console.SetOut(_writer);
+          //  Console.SetOut(_writer);
 
-            Console.WriteLine("Now redirecting output to the text box");
+          //  Console.WriteLine("Now redirecting output to the text box");
            // System.Diagnostics.Process.Start("");
-             
 
+      // string input = System.Console.ReadLine();
+       //richTextBox1.Text = input;
         }
 
         private void btn_usbSerial_Click(object sender, System.EventArgs e)
@@ -83,5 +85,31 @@ namespace Ejaaduino
            
         }
 
+        private void btn_custom_Click(object sender, EventArgs e)
+        {
+           // Console.WriteLine(richTextBox1.Text+"\n"); // write RTB text to console
+           // Console.ReadLine(output);
+           // richTextBox1.Text = output;
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Win32.FreeConsole(); // Free the console.
+        }
+
+    }
+    public class Win32
+    {
+        /// <summary>
+        /// Allocates a new console for current process.
+        /// </summary>
+        [DllImport("kernel32.dll")]
+        public static extern Boolean AllocConsole();
+
+        /// <summary>
+        /// Frees the console.
+        /// </summary>
+        [DllImport("kernel32.dll")]
+        public static extern Boolean FreeConsole();
     }
 }

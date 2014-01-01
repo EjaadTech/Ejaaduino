@@ -82,6 +82,7 @@
             this.btn_custom.TabIndex = 2;
             this.btn_custom.Text = "Custom Firmware";
             this.btn_custom.UseVisualStyleBackColor = false;
+            this.btn_custom.Click += new System.EventHandler(this.btn_custom_Click);
             // 
             // statusStrip1
             // 
@@ -154,7 +155,7 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(0, 212);
+            this.richTextBox1.Location = new System.Drawing.Point(3, 212);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(623, 96);
             this.richTextBox1.TabIndex = 9;
@@ -182,6 +183,7 @@
             this.Name = "Form1";
             this.ShowIcon = false;
             this.Text = "Ejaaduino App V2.3";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
