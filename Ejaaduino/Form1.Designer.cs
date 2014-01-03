@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btn_programmer = new System.Windows.Forms.Button();
             this.btn_usbSerial = new System.Windows.Forms.Button();
             this.btn_custom = new System.Windows.Forms.Button();
@@ -38,6 +39,7 @@
             this.lbl_heading = new System.Windows.Forms.Label();
             this.lbl_Exit = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -161,6 +163,12 @@
             this.richTextBox1.TabIndex = 9;
             this.richTextBox1.Text = "";
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -203,6 +211,7 @@
         private System.Windows.Forms.Label lbl_heading;
         private System.Windows.Forms.Label lbl_Exit;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
