@@ -1,16 +1,13 @@
 TODO
-1-Remove Boundaries - NJ
-2-Blue Big ASS Buttons - NJ
-3-Metro Look Overall - NJ
-4-ReadMe - ZP
-5-Minimize Button
-6-Auto Update functionality
-7-Form movement function
-8-open arduino IDE - Done
-9 - Make programmer button - Done
-10-Make Usb to Serial button - Done
-11- remember last screen position
-12-detect ejaaduino
-13-show upload progress
-14-add settings window (for arduino ide path/avr development folder path)
-15-add ejaaduino in arduino ide
+1-ReadMe
+2-Minimize Button
+3-Auto Update functionality
+4-Form movement function
+5-open arduino IDE - Done
+6 - Make programmer button - Done
+7-Make Usb to Serial button - Done
+8- remember last screen position
+9-detect ejaaduino
+10-show upload progress
+11-add settings window (for arduino ide path/avr development folder path)
+12-add ejaaduino in arduino ide
