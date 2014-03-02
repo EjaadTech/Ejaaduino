@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btn_programmer = new System.Windows.Forms.Button();
             this.btn_usbSerial = new System.Windows.Forms.Button();
@@ -38,7 +37,8 @@
             this.lbl_heading = new System.Windows.Forms.Label();
             this.lbl_Exit = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_programmer
@@ -48,11 +48,11 @@
             this.btn_programmer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_programmer.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_programmer.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btn_programmer.Location = new System.Drawing.Point(66, 137);
+            this.btn_programmer.Location = new System.Drawing.Point(66, 148);
             this.btn_programmer.Name = "btn_programmer";
-            this.btn_programmer.Size = new System.Drawing.Size(133, 67);
+            this.btn_programmer.Size = new System.Drawing.Size(133, 56);
             this.btn_programmer.TabIndex = 0;
-            this.btn_programmer.Text = "Programmer Mode";
+            this.btn_programmer.Text = "AVR Programmer";
             this.btn_programmer.UseVisualStyleBackColor = false;
             this.btn_programmer.Click += new System.EventHandler(this.btn_programmer_Click);
             // 
@@ -62,9 +62,9 @@
             this.btn_usbSerial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_usbSerial.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_usbSerial.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btn_usbSerial.Location = new System.Drawing.Point(205, 137);
+            this.btn_usbSerial.Location = new System.Drawing.Point(344, 85);
             this.btn_usbSerial.Name = "btn_usbSerial";
-            this.btn_usbSerial.Size = new System.Drawing.Size(133, 68);
+            this.btn_usbSerial.Size = new System.Drawing.Size(133, 56);
             this.btn_usbSerial.TabIndex = 1;
             this.btn_usbSerial.Text = "USB <->Serial Mode";
             this.btn_usbSerial.UseVisualStyleBackColor = false;
@@ -76,9 +76,9 @@
             this.btn_custom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_custom.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_custom.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btn_custom.Location = new System.Drawing.Point(344, 137);
+            this.btn_custom.Location = new System.Drawing.Point(344, 148);
             this.btn_custom.Name = "btn_custom";
-            this.btn_custom.Size = new System.Drawing.Size(133, 68);
+            this.btn_custom.Size = new System.Drawing.Size(133, 56);
             this.btn_custom.TabIndex = 2;
             this.btn_custom.Text = "Custom Firmware";
             this.btn_custom.UseVisualStyleBackColor = false;
@@ -89,13 +89,13 @@
             this.btn_arduino.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.btn_arduino.FlatAppearance.BorderSize = 0;
             this.btn_arduino.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_arduino.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_arduino.Font = new System.Drawing.Font("Century Gothic", 14.25F);
             this.btn_arduino.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btn_arduino.Location = new System.Drawing.Point(66, 82);
+            this.btn_arduino.Location = new System.Drawing.Point(66, 85);
             this.btn_arduino.Name = "btn_arduino";
-            this.btn_arduino.Size = new System.Drawing.Size(411, 48);
+            this.btn_arduino.Size = new System.Drawing.Size(133, 56);
             this.btn_arduino.TabIndex = 4;
-            this.btn_arduino.Text = "Open Arduino IDE";
+            this.btn_arduino.Text = "Arduino";
             this.btn_arduino.UseVisualStyleBackColor = false;
             this.btn_arduino.Click += new System.EventHandler(this.btn_arduino_Click);
             // 
@@ -126,9 +126,9 @@
             this.lbl_Exit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_Exit.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Exit.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lbl_Exit.Location = new System.Drawing.Point(512, 8);
+            this.lbl_Exit.Location = new System.Drawing.Point(510, 8);
             this.lbl_Exit.Name = "lbl_Exit";
-            this.lbl_Exit.Size = new System.Drawing.Size(23, 25);
+            this.lbl_Exit.Size = new System.Drawing.Size(25, 25);
             this.lbl_Exit.TabIndex = 8;
             this.lbl_Exit.Text = "X";
             this.lbl_Exit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -139,17 +139,40 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(12, 212);
+            this.richTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.Location = new System.Drawing.Point(12, 219);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(518, 96);
+            this.richTextBox1.Size = new System.Drawing.Size(518, 89);
             this.richTextBox1.TabIndex = 9;
             this.richTextBox1.Text = "";
             // 
-            // timer1
+            // button1
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.button1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Location = new System.Drawing.Point(205, 85);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(133, 56);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "AVR C Programming";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Century Gothic", 14.25F);
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button2.Location = new System.Drawing.Point(205, 148);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(133, 56);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "89S51 Programmer";
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
@@ -160,6 +183,8 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(542, 335);
             this.ControlBox = false;
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.lbl_Exit);
             this.Controls.Add(this.lbl_heading);
@@ -176,6 +201,8 @@
             this.ShowIcon = false;
             this.Text = "Ejaaduino App V2.3";
             this.TransparencyKey = System.Drawing.Color.Lime;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,7 +218,8 @@
         private System.Windows.Forms.Label lbl_heading;
         private System.Windows.Forms.Label lbl_Exit;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 

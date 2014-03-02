@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
+//using System.Runtime.InteropServices;
 
 namespace Ejaaduino
 {
@@ -77,31 +77,51 @@ namespace Ejaaduino
 
         private void btn_arduino_Click(object sender, EventArgs e)
         {
-            Process p = new Process();
-            p.StartInfo.FileName = Path.Combine(Application.StartupPath, "C:\\Program Files (x86)\\Arduino\\arduino.exe");
-            p.Start();
-            StartProcess();
+            if (File.Exists(Properties.Settings.Default.arduinoPath) == true)
+            {
+                Process p = new Process();
+                p.StartInfo.FileName = Path.Combine(Application.StartupPath, Properties.Settings.Default.arduinoPath);
+                p.Start();
+            }
+            else
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "Arduino Executable |arduino.exe";
+                dialog.InitialDirectory = @"C:\";
+                dialog.Title = "Locate Arduino Executable (arduino.exe)";
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    string fileName = Path.GetFileName(dialog.FileName);
+                    if (fileName.Contains("arduino"))
+                    {
+                        btn_arduino.TextAlign = ContentAlignment.MiddleCenter;
+                        Properties.Settings.Default.arduinoPath = dialog.FileName;
+                        btn_arduino.Text = "Arduino";
+                        btn_arduino.ForeColor = Color.White;
+                    }
+                }
+            }
         }
 
         private void btn_programmer_Click(object sender, EventArgs e)
         {
-            //Ejaaduino.Echo h = new Ejaaduino.Echo("Hello my 1st C# object !");
-            //h.Tell();
-            //string v = "-c usbasp -p m8 -U flash:w:programmer.hex";
+            // Ejaaduino.Echo h = new Ejaaduino.Echo("Hello my 1st C# object !");
+            // h.Tell();
+            // string v = "-c usbasp -p m8 -U flash:w:programmer.hex";
             // System.Diagnostics.Process.Start("cmd.exe", "/k avrdude.exe -c usbasp -p m8 -U flash:w:programmer.hex");
             // System.Diagnostics.myProcess.Start("avrdude.exe", "hey");
             StartProcess();
             // var processStartInfo = new ProcessStartInfo("cmd.exe");
             // Instantiate the writer
-            //  _writer = new TextBoxStreamWriter(txtConsole);
+            // _writer = new TextBoxStreamWriter(txtConsole);
             // Redirect the out Console stream
-            //  Console.SetOut(_writer);
+            // Console.SetOut(_writer);
 
-            //  Console.WriteLine("Now redirecting output to the text box");
+            // Console.WriteLine("Now redirecting output to the text box");
             // System.Diagnostics.Process.Start("");
 
             // string input      = System.Console.ReadLine();
-            //richTextBox1.Text = input;
+            // richTextBox1.Text = input;
         }
         private void StartProcess()
         {
@@ -141,10 +161,10 @@ namespace Ejaaduino
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            richTextBox1.Text = commandData;
-        }
+        //private void timer1_Tick(object sender, EventArgs e)
+        //{
+        //    richTextBox1.Text = commandData;
+        //}
 
         private void btn_usbSerial_Click(object sender, System.EventArgs e)
         {
@@ -157,6 +177,34 @@ namespace Ejaaduino
            // Console.WriteLine(richTextBox1.Text+"\n"); // write RTB text to console
            // Console.ReadLine(output);
            // richTextBox1.Text = output;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.Location = Properties.Settings.Default.appLocation;
+
+            richTextBox1.Text = "Settings Loaded\n" + richTextBox1.Text;
+
+            // Check for Arduino file
+            if (File.Exists(Properties.Settings.Default.arduinoPath) == false)
+                Properties.Settings.Default.arduinoPath = "";
+            else
+                richTextBox1.Text = "Arduino IDE found.\n" + richTextBox1.Text;
+
+            if (Properties.Settings.Default.arduinoPath == "")
+            {
+                btn_arduino.TextAlign = ContentAlignment.TopCenter;
+                richTextBox1.Text = "Arduino IDE not found (Click on Arduino to Locate).\n" + richTextBox1.Text;
+                btn_arduino.Text = "Arduino IDE not found";
+                btn_arduino.ForeColor = Color.Red;
+            }
+                
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.appLocation = this.Location;
+            Properties.Settings.Default.Save();
         }
     }
 }
