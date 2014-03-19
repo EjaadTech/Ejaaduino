@@ -68,6 +68,9 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrashReporter.NET">
+      <HintPath>..\..\..\..\Downloads\CrashReporter.NET 1.3\CrashReporter.NET.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
