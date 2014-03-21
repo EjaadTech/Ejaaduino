@@ -14,12 +14,10 @@ namespace Ejaaduino
 
     public partial class Form1 : Form
     {
-        static int i = 0;
         Process myProcess = new Process();
         public static string commandData = "";
 
-        
-        int j = 1 / i;
+
         //Form move Code - START
         // from http://jachman.wordpress.com/2006/06/08/enhanced-drag-and-move-winforms-without-having-a-titlebar/
         private const int WM_NCHITTEST = 0x84;
